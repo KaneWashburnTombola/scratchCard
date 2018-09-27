@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    "main": './main.ts',
-    "polyfills": ["core-js/es6/object", "core-js/es6/function", "core-js/es6/array", "core-js/es6/string", "core-js/es6/number", "core-js/es6/promise"]
+    "main": './main.ts'
   },
   devServer: {
     contentBase: path.resolve(__dirname, '.'),
