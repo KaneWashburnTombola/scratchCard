@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import { SymbolSprite } from './symbols-sprite';
 
 export class SymbolsView extends PIXI.Container {
 
@@ -14,7 +15,6 @@ export class SymbolsView extends PIXI.Container {
         placeholder.beginFill(0xFFFFFF);
         placeholder.drawRect(0, 0, 600, 300);
         placeholder.endFill();
-
         this.addChild(placeholder);
     }
 }
