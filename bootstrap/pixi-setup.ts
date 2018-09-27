@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js';
-import { IResources } from '../assets/textureCache';
+import { IResources, setTextureCache } from '../assets/textureCache';
 import { BaseContainer } from './base-container';
 
 export class PIXISetup {
@@ -9,7 +9,7 @@ export class PIXISetup {
         document.body.appendChild(pixiApp.view);
         loader.add('textures', 'assets/textures.json');
         loader.load((_loader: PIXI.loaders.Loader, resources: IResources) => {
-            // setTextureCache(resources);
+            setTextureCache(resources.textures.data.textures);
             pixiApp.stage.addChild(new BaseContainer());
         });
     }
