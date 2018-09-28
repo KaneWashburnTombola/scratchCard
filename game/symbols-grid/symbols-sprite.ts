@@ -24,6 +24,7 @@ export class SymbolSprite extends PIXI.extras.AnimatedSprite {
         this.x = config.positions[positionIndex];
         this.loopCount = 0;
         this.totalLoops = 3;
+        this.animationSpeed = 0.5;
         this.y = 25;
         this.anchor.set(0.5);
         this.onLoop = this.onAnimationLoop.bind(this);
