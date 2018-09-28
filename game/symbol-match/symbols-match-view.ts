@@ -7,15 +7,10 @@ export class SymbolsToMatchView extends PIXI.Container {
         super();
         this.setupSymbols();
         this.y = 50;
-        this.x = -225;
+        this.x = -250;
     }
 
     private setupSymbols(): void {
-        const placeholder = new PIXI.Graphics();
-        placeholder.beginFill(0xFFFFFF);
-        placeholder.drawRect(0, -10, 500, 75);
-        placeholder.endFill();
-        this.addChild(placeholder);
         const symbolConfig = {
             positions: [ 50, 150, 250, 350, 450 ],
             size: 75

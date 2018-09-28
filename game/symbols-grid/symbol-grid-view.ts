@@ -11,10 +11,12 @@ export class SymbolsView extends PIXI.Container {
     }
 
     private setupSymbols(): void {
-        const placeholder = new PIXI.Graphics();
-        placeholder.beginFill(0xFFFFFF);
-        placeholder.drawRect(0, 0, 600, 300);
-        placeholder.endFill();
-        this.addChild(placeholder);
+        const symbolConfig = {
+            positions: [ 50, 175, 300, 425, 550 ],
+            size: 75
+        } 
+        for (let x = 0; x < 5; x++) {
+            this.addChild(new SymbolSprite(Math.floor(Math.random() * 16), symbolConfig, x));
+        }
     }
 }
