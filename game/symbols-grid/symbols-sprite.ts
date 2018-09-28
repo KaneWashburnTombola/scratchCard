@@ -7,14 +7,34 @@ interface ISymbolConfig {
     size: number;
 }
 
-export class SymbolSprite extends PIXI.Sprite {
+export class SymbolSprite extends PIXI.extras.AnimatedSprite {
+    private totalLoops: number;
+    private loopCount: number;
+
     constructor(symbolNumber: number, config: ISymbolConfig, positionIndex: number) {
-        console.log(textureCache[symbolMapper[symbolNumber]].textures)
-        super(PIXI.utils.TextureCache[symbolMapper[symbolNumber]])
+        const frames = textureCache[symbolMapper[symbolNumber]].textures;
+        const textureArray: PIXI.Texture[] = [];
+    
+        for (const frame of Object.keys(frames as {})) {
+            textureArray.push(frames![frame]);
+        }       
+        super(textureArray)
         this.height = config.size;
         this.width = config.size;
         this.x = config.positions[positionIndex];
+        this.loopCount = 0;
+        this.totalLoops = 3;
         this.y = 25;
         this.anchor.set(0.5);
+        this.onLoop = this.onAnimationLoop.bind(this);
+        this.play();
+    }
+
+    private onAnimationLoop(): void {
+        this.loopCount++;
+
+        if (this.totalLoops && this.totalLoops === this.loopCount) {
+            this.stop();
+        }
     }
 }
