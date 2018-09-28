@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js';
 import { symbolMapper } from '../../assets/symbol-mapper';
+import { textureCache } from '../../assets/textureCache';
 
 interface ISymbolConfig {
     positions: number[];
@@ -8,6 +9,7 @@ interface ISymbolConfig {
 
 export class SymbolSprite extends PIXI.Sprite {
     constructor(symbolNumber: number, config: ISymbolConfig, positionIndex: number) {
+        console.log(textureCache[symbolMapper[symbolNumber]].textures)
         super(PIXI.utils.TextureCache[symbolMapper[symbolNumber]])
         this.height = config.size;
         this.width = config.size;
