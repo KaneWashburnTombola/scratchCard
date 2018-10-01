@@ -1,22 +1,18 @@
 import * as PIXI from 'pixi.js';
-import { SymbolSprite } from './symbols-sprite';
+import { SymbolsRowView } from './symbol-row-view';
 
 export class SymbolsView extends PIXI.Container {
 
     constructor() {
         super();
-        this.setupSymbols();
+        this.setupRows();
         this.y = 50;
         this.x = -200;
     }
 
-    private setupSymbols(): void {
-        const symbolConfig = {
-            positions: [ 50, 175, 300, 425, 550 ],
-            size: 75
-        } 
-        for (let x = 0; x < 5; x++) {
-            this.addChild(new SymbolSprite(Math.floor(Math.random() * 16), symbolConfig, x));
+    private setupRows(): void {
+        for (let x = 0; x < 3; x++) {
+            this.addChild(new SymbolsRowView(x * 100));
         }
     }
 }

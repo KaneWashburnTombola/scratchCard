@@ -1,19 +1,18 @@
 import * as PIXI from 'pixi.js';
+import { AmountsRowView } from './amounts-row-view';
 
 export class AmountsView extends PIXI.Container {
 
     constructor() {
         super();
-        this.setupSymbols();
+        this.setupRows();
         this.y = 50;
-        this.x = -200;
+        this.x = -175;
     }
 
-    private setupSymbols(): void {
-        const placeholder = new PIXI.Graphics();
-        placeholder.beginFill(0x01147E);
-        placeholder.drawRect(0, 0, 400, 300);
-        placeholder.endFill();
-        this.addChild(placeholder);
+    private setupRows(): void {
+        for (let x = 0; x < 3; x++) {
+            this.addChild(new AmountsRowView(x * 100));
+        }
     }
 }
