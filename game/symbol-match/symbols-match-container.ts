@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { SymbolMatchTitle } from './symbols-match-title';
 import { SymbolsToMatchView } from './symbols-match-view';
+import container from '../../bootstrap/ioc-setup';
 
 export class SymbolMatchContainer extends PIXI.Container {
 
@@ -12,6 +13,7 @@ export class SymbolMatchContainer extends PIXI.Container {
     }
 
     private setupContent(): void {
-        this.addChild(new SymbolMatchTitle(), new SymbolsToMatchView());
+        const symbolsToMatchView = container.get<SymbolsToMatchView>(SymbolsToMatchView);
+        this.addChild(new SymbolMatchTitle(), symbolsToMatchView);
     }
 }
