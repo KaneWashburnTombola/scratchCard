@@ -1,9 +1,12 @@
 import * as PIXI from 'pixi.js';
-import { SymbolSprite } from '../symbols-grid/symbols-sprite';
+import { ISymbolSprite } from '../symbols-grid/symbols-sprite';
+import { inject, injectable } from 'inversify';
+import { symbols } from '../../constants/ioc-symbols';
 
+@injectable()
 export class SymbolsToMatchView extends PIXI.Container {
 
-    constructor() {
+    constructor(@inject(symbols.symbolSprite) private symbolSprite: ISymbolSprite) {
         super();
         this.setupSymbols();
         this.y = 50;
@@ -16,7 +19,8 @@ export class SymbolsToMatchView extends PIXI.Container {
             size: 75
         } 
         for (let x = 0; x < 5; x++) {
-            this.addChild(new SymbolSprite(Math.floor(Math.random() * 16), symbolConfig, x));
+            const symbol = this.symbolSprite.generateSymbol(Math.floor(Math.random() * 16), symbolConfig, x)
+            this.addChild(symbol);
         }
     }
 }

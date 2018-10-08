@@ -1,18 +1,18 @@
 import * as PIXI from 'pixi.js';
 import { SymbolsRowView } from './symbol-row-view';
+import { inject } from 'inversify';
+import { symbols } from '../../constants/ioc-symbols';
 
 export class SymbolsView extends PIXI.Container {
-
-    constructor() {
+    constructor(@inject(symbols.symbolsRowViewFactory) createSymbolRowView: () => SymbolsRowView) {
         super();
-        this.setupRows();
         this.y = 50;
         this.x = -200;
-    }
 
-    private setupRows(): void {
         for (let x = 0; x < 3; x++) {
-            this.addChild(new SymbolsRowView(x * 100));
+            const row: SymbolsRowView = createSymbolRowView();
+            row.y = x * 100;
+            this.addChild(row);
         }
     }
 }

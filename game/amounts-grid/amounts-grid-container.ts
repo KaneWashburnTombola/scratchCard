@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import { AmountsGridTitle } from './amounts-grid-title';
 import { AmountsView } from './amounts-grid-view';
+import container from '../../bootstrap/ioc-setup';
 
 export class AmountsGridContainer extends PIXI.Container {
     constructor() {
@@ -12,6 +13,7 @@ export class AmountsGridContainer extends PIXI.Container {
     }
 
     private setupContents(): void {
-        this.addChild(new AmountsGridTitle(), new AmountsView());
+        const amountsView = container.get<AmountsView>(AmountsView);
+        this.addChild(new AmountsGridTitle(), amountsView);
     }
 }
