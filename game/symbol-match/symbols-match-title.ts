@@ -1,8 +1,9 @@
 import * as PIXI from 'pixi.js';
+import { ITitleLayout } from '../amounts-grid/amounts-grid-layout';
 
 export class SymbolMatchTitle extends PIXI.Text {
-    constructor() {
-        super('This is Symbol Match Title Text', {
+    constructor(titleLayout: ITitleLayout) {
+        super(titleLayout.text, {
             fill: 0xFFFFFF,
             fontSize: 22,
             fontFamily: 'Helvetica'

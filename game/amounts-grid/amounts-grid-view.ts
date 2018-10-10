@@ -12,14 +12,13 @@ export class AmountsView extends PIXI.Container implements IAmountsView {
 
     constructor(@inject(symbols.amountsRowViewFactory) private createAmountsRowViews: () => AmountsRowView) {
         super();
-
     }
 
     public setupValues(layout: IGridLayout): void {
         this.y = layout.y;
         this.x = layout.x;
 
-        for (let x = 0; x < 3; x++) {
+        for (let x = 0; x < layout.numberOfRows; x++) {
             const row: AmountsRowView = this.createAmountsRowViews();
             row.y = x * 100;
             row.setupSymbols(layout.rowView.symbolConfig);

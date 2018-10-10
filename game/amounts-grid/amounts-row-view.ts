@@ -17,7 +17,7 @@ export class AmountsRowView extends PIXI.Container {
 
     public setupSymbols(config: ISymbolConfig): void {
         for (let x = 0; x < config.numberOfSymbols; x++) {
-            const symbol = this.symbolSprite.generateSymbol(Math.floor(Math.random() * 16), config, x)
+            const symbol = this.symbolSprite.generateSymbol(Math.floor(Math.random() * 16), config, x);
             this.addChild(symbol);
         }
     }

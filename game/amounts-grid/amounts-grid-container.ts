@@ -20,6 +20,6 @@ export class AmountsGridContainer extends PIXI.Container {
 
     private setupContents(): void {
         this.amountsView.setupValues(this.amountsGridLayout.layout.gridView);
-        this.addChild(new AmountsGridTitle(), this.amountsView);
+        this.addChild(new AmountsGridTitle(this.amountsGridLayout.layout.title), this.amountsView);
     }
 }

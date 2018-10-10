@@ -6,12 +6,19 @@ export interface IAmountsGridLayout {
 
 export interface IAmountsLayout {
     container: IPosition;
+    title: ITitleLayout;
     gridView: IGridLayout;
+}
+
+export interface ITitleLayout {
+    text: string;
+    x: number;
 }
 
 export interface IGridLayout {
     x: number;
     y:number;
+    numberOfRows: number;
     rowView: {
         symbolConfig: ISymbolConfig;
     }
@@ -30,15 +37,20 @@ export interface ISymbolConfig {
 
 
 @injectable()
-export class AmountsGridLayout {
+export class AmountsGridLayout implements IAmountsGridLayout {
     public readonly layout = {
         container: {
             x: 1000,
             y: 250
         },
+        title: {
+            text: 'This is Amounts Grid Title Text',
+            x: 0
+        },
         gridView: {
             x: -175,
             y: 50,
+            numberOfRows: 3,
             rowView: {
                 symbolConfig: {
                     numberOfSymbols: 3,
