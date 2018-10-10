@@ -1,19 +1,25 @@
 import * as PIXI from 'pixi.js';
 import { AmountsGridTitle } from './amounts-grid-title';
-import { AmountsView } from './amounts-grid-view';
-import container from '../../bootstrap/ioc-setup';
+import { inject, injectable } from 'inversify';
+import { symbols } from '../../constants/ioc-symbols';
+import { IAmountsGridLayout } from './amounts-grid-layout';
+import { IAmountsView } from './amounts-grid-view';
 
+@injectable()
 export class AmountsGridContainer extends PIXI.Container {
-    constructor() {
+    constructor(
+        @inject(symbols.amountsGridLayout) private amountsGridLayout: IAmountsGridLayout,
+        @inject(symbols.amountsView) private amountsView: IAmountsView
+    ) {
         super();
-        this.x = 1000;
-        this.y = 250;
+        this.x = this.amountsGridLayout.layout.container.x;
+        this.y = this.amountsGridLayout.layout.container.y;
 
         this.setupContents();
     }
 
     private setupContents(): void {
-        const amountsView = container.get<AmountsView>(AmountsView);
-        this.addChild(new AmountsGridTitle(), amountsView);
+        this.amountsView.setupValues(this.amountsGridLayout.layout.gridView);
+        this.addChild(new AmountsGridTitle(), this.amountsView);
     }
 }
