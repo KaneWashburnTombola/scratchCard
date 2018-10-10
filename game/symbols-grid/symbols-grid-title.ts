@@ -1,13 +1,14 @@
 import * as PIXI from 'pixi.js';
+import { ITitleLayout } from '../amounts-grid/amounts-grid-layout';
 
 export class SymbolGridTitle extends PIXI.Text {
-    constructor() {
-        super('This is Symbol Grid Title Text', {
+    constructor(layout: ITitleLayout) {
+        super(layout.text, {
             fill: 0xFFFFFF,
             fontSize: 22,
             fontFamily: 'Helvetica'
         });
-        this.x = 100;
+        this.x = layout.x;
         this.anchor.set(0.5);
     }
 }

@@ -1,10 +1,12 @@
 
 export const symbols = {
-    amountsRowViewFactory: Symbol.for('AmountsRowViewFactory'),
     symbolSprite: Symbol.for('SymbolSprite'),
-    symbolsRowViewFactory: Symbol.for('SymbolRowViewFactory'),
+    amountsRowViewFactory: Symbol.for('AmountsRowViewFactory'),
     amountsGridLayout: Symbol.for('AmountsGrindLayout'),
     amountsView: Symbol.for('IAmountsView'),
     symbolsToMatchLayout: Symbol.for('SymbolsToMatchLayout'),
-    symbolsToMatchView: Symbol.for('SymbolsToMatchView')
+    symbolsToMatchView: Symbol.for('SymbolsToMatchView'),
+    symbolsRowViewFactory: Symbol.for('SymbolRowViewFactory'),
+    symbolsGridLayout: Symbol.for('SymbolsGridLayout'),
+    symbolsView: Symbol.for('SymbolsView')
 };
