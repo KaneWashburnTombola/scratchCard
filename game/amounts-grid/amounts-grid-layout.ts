@@ -33,6 +33,7 @@ export interface ISymbolConfig {
     numberOfSymbols: number;
     positions: number[];
     size: number;
+    tokenSize: number;
 }
 
 
@@ -55,7 +56,8 @@ export class AmountsGridLayout implements IAmountsGridLayout {
                 symbolConfig: {
                     numberOfSymbols: 3,
                     positions: [50, 175, 300],
-                    size: 75
+                    size: 75,
+                    tokenSize: 90
                 }
             }
         }

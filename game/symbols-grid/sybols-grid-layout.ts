@@ -37,7 +37,8 @@ export class SymbolsGridLayout implements ISymbolsGridLayout {
             symbolConfig: {
                 numberOfSymbols: 5,
                 positions: [50, 175, 300, 425, 550],
-                size: 75
+                size: 75,
+                tokenSize: 90
             }
         }
     }

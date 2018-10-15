@@ -18,5 +18,6 @@ export const texturesUrls: ITextures = {
     snowman: "assets/images/reveal/snowman@2x.json",
     sock: "assets/images/reveal/sock@2x.json",
     star: "assets/images/reveal/star@2x.json",
+    scratch: "assets/images/reveal/latex_scratch.json",
     symbols: "assets/images/symbols/advent-symbols@2x.json"
 }

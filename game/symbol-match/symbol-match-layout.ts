@@ -25,7 +25,8 @@ export class SymbolToMatchLayout implements ISymbolsToMatchLayout {
         symbolConfig: {
             numberOfSymbols: 5,
             positions: [ 50, 150, 250, 350, 450 ],
-            size: 75
+            size: 75,
+            tokenSize: 90
         }
     }
 }

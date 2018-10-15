@@ -10,7 +10,6 @@ export interface IAmountsRowView extends PIXI.Container {
 
 @injectable()
 export class AmountsRowView extends PIXI.Container {
-
     constructor(@inject(symbols.symbolSprite) private symbolSprite: ISymbolSprite) {
         super();
     }
@@ -18,7 +17,17 @@ export class AmountsRowView extends PIXI.Container {
     public setupSymbols(config: ISymbolConfig): void {
         for (let x = 0; x < config.numberOfSymbols; x++) {
             const symbol = this.symbolSprite.generateSymbol(Math.floor(Math.random() * 16), config, x);
-            this.addChild(symbol);
+            const token = this.symbolSprite.generateSymbol(Math.floor(Math.random() * 16), config, x, true);
+            token.interactive = true;
+            token.on('mousedown', this.onTap.bind(token, token, symbol));
+
+            this.addChild(symbol, token);
         }
+    }
+
+    private onTap(token: PIXI.extras.AnimatedSprite, symbol: PIXI.extras.AnimatedSprite): void {
+        token.interactive = false;
+        token.visible = false;
+        symbol.play();
     }
 }
