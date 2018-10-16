@@ -1,11 +1,12 @@
 import { injectable } from "inversify";
+import { IContainer } from "../symbols-grid/sybols-grid-layout";
 
 export interface IAmountsGridLayout {
     layout: IAmountsLayout;
 }
 
 export interface IAmountsLayout {
-    container: IPosition;
+    container: IContainer;
     title: ITitleLayout;
     gridView: IGridLayout;
 }
@@ -41,7 +42,8 @@ export interface ISymbolConfig {
 export class AmountsGridLayout implements IAmountsGridLayout {
     public readonly layout = {
         container: {
-            x: 1000,
+            offScreenX: 1500,
+            onScreenX: 1000,
             y: 250
         },
         title: {

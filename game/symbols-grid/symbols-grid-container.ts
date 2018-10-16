@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 import { ISymbolsView } from './symbol-grid-view';
 import { SymbolGridTitle } from './symbols-grid-title';
 import { injectable, inject } from 'inversify';
+import { TweenLite } from 'gsap';
 import { ISymbolsGridLayout, ISymbolsLayout } from './sybols-grid-layout';
 import { symbols } from '../../constants/ioc-symbols';
 
@@ -14,9 +15,10 @@ export class SymbolsGridContainer extends PIXI.Container {
         ) {
         super();
         this.layout = symbolsGridLayout.layout;
-        this.x = this.layout.container.x;
+        this.x = this.layout.container.offScreenX;
         this.y = this.layout.container.y;
-
+        TweenLite.to(this, 1, { x: this.layout.container.onScreenX});
+       
         this.setupContents();
     }
 

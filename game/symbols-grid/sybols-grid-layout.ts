@@ -6,7 +6,7 @@ export interface ISymbolsGridLayout {
 }
 
 export interface ISymbolsLayout {
-    container: IPosition;
+    container: IContainer;
     title: ITitleLayout;
     rows: IRowConfig;
 }
@@ -18,12 +18,19 @@ export interface IRowConfig {
     symbolConfig: ISymbolConfig;
 }
 
+export interface IContainer {
+    offScreenX: number;
+    onScreenX: number;
+    y: number;
+}
+
 
 @injectable()
 export class SymbolsGridLayout implements ISymbolsGridLayout {
     public readonly layout = {
         container: {
-            x: 250,
+            offScreenX: -250,
+            onScreenX: 250,
             y: 250
         },
         title: {
