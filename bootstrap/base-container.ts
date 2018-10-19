@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js';
-import { GameView } from '../game/game-view';
+import { GameView } from '../game-ui/game-view';
 
 export class BaseContainer extends PIXI.Container {
     constructor() {

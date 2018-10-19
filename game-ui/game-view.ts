@@ -12,10 +12,6 @@ export class GameView extends PIXI.Container {
     }
 
     private setupScene(): void {
-        this.createTitleSection();
-    }
-
-    private createTitleSection(): void {
         const amountsGridContainer = container.get<AmountsGridContainer>(AmountsGridContainer);
         const symbolMatchContainer = container.get<SymbolMatchContainer>(SymbolMatchContainer);
         const symbolsGridContainer = container.get<SymbolsGridContainer>(SymbolsGridContainer);
